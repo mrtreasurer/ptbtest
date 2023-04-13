@@ -61,13 +61,13 @@ class Mockbot(TelegramObject):
 
     def __init__(self, username="MockBot", **kwargs):
         self._updates = []
-        self.bot = None
+        self._bot = None
         self._username = username
         self._sendmessages = []
         from .messagegenerator import MessageGenerator
         from .chatgenerator import ChatGenerator
-        self.mg = MessageGenerator(bot=self)
-        self.cg = ChatGenerator()
+        self._mg = MessageGenerator(bot=self)
+        self._cg = ChatGenerator()
 
     @property
     def sent_messages(self):
@@ -99,22 +99,22 @@ class Mockbot(TelegramObject):
     @property
     @info
     def id(self):
-        return self.bot.id
+        return self._bot.id
 
     @property
     @info
     def first_name(self):
-        return self.bot.first_name
+        return self._bot.first_name
 
     @property
     @info
     def last_name(self):
-        return self.bot.last_name
+        return self._bot.last_name
 
     @property
     @info
     def username(self):
-        return self.bot.username
+        return self._bot.username
 
     @property
     def name(self):
@@ -190,8 +190,8 @@ class Mockbot(TelegramObject):
         return decorator
 
     def getMe(self, timeout=None, **kwargs):
-        self.bot = User(0, "Mockbot", last_name="Bot", username=self._username)
-        return self.bot
+        self._bot = User(0, "Mockbot", last_name="Bot", username=self._username)
+        return self._bot
 
     @message
     def sendMessage(self,
