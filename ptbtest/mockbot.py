@@ -26,7 +26,7 @@ import warnings
 
 import time
 
-from telegram import (User, ReplyMarkup, TelegramObject)
+from telegram import (User, TelegramObject)
 from telegram.error import TelegramError
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
@@ -132,12 +132,12 @@ class Mockbot(TelegramObject):
                 data['disable_notification'] = kwargs.get(
                     'disable_notification')
 
-            if kwargs.get('reply_markup'):
-                reply_markup = kwargs.get('reply_markup')
-                if isinstance(reply_markup, ReplyMarkup):
-                    data['reply_markup'] = reply_markup.to_json()
-                else:
-                    data['reply_markup'] = reply_markup
+            # if kwargs.get('reply_markup'):
+            #     reply_markup = kwargs.get('reply_markup')
+            #     if isinstance(reply_markup, ReplyMarkup):
+            #         data['reply_markup'] = reply_markup.to_json()
+            #     else:
+            #         data['reply_markup'] = reply_markup
             data['method'] = func.__name__
             self._sendmessages.append(data)
             if data['method'] in ['sendChatAction']:
