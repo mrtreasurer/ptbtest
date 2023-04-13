@@ -252,7 +252,7 @@ class MessageGenerator(PtbGenerator):
             contact=contact,
             location=location,
             venue=venue,
-            new_chat_member=new_chat_member,
+            new_chat_members=(new_chat_member,),
             left_chat_member=left_chat_member,
             new_chat_title=new_chat_title,
             new_chat_photo=new_chat_photo,
@@ -265,7 +265,7 @@ class MessageGenerator(PtbGenerator):
             pinned_message=pinned_message,
             forward_from_message_id=forward_from_message_id,
             forward_date=forward_date,
-            bot=bot or self.bot)
+            via_bot=bot or self.bot)
 
     def _handle_attachments(self, audio, contact, document, location, photo,
                             sticker, user, venue, video, voice, caption):
