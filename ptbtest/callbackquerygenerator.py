@@ -115,8 +115,7 @@ class CallbackQueryGenerator(PtbGenerator):
                 "exactly 1 of data and game_short_name is needed")
 
         return CallbackQuery(self._gen_id(), user, chat_instance, message,
-                             data, inline_message_id, game_short_name,
-                             self.bot)
+                             data, inline_message_id, game_short_name)
 
     def _gen_id(self):
         return str(uuid.uuid4())
