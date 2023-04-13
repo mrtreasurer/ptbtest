@@ -41,13 +41,7 @@ class TestChatGenerator(unittest.TestCase):
 
         self.assertTrue(c.id < 0)
         self.assertEqual(c.type, "group")
-        self.assertFalse(c.all_members_are_administrators)
         self.assertIsInstance(c.title, str)
-
-    def test_group_all_members_are_administrators(self):
-        c = self.cg.get_chat(type="group", all_members_are_administrators=True)
-        self.assertEqual(c.type, "group")
-        self.assertTrue(c.all_members_are_administrators)
 
     def test_group_chat_with_group_name(self):
         c = self.cg.get_chat(type="group", title="My Group")

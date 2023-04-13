@@ -44,8 +44,7 @@ class ChatGenerator(PtbGenerator):
                  type="private",
                  title=None,
                  username=None,
-                 user=None,
-                 all_members_are_administrators=False):
+                 user=None):
         """
         Returns a telegram.Chat object with the optionally given type or username
         If any of the arguments are omitted the names will be chosen randomly and the
@@ -59,7 +58,6 @@ class ChatGenerator(PtbGenerator):
             title (Optional[str]): Title  for the group/supergroup/channel/
             username (Optional[str]): Username for the private/supergroup/channel.
             user (Optional[telegram.User]): If given a private chat for the supplied user will be generated.
-            all_members_are_administrators: set's this flag for a group.
 
         Returns:
             telegram.Chat: A telegram Chat object.
@@ -91,8 +89,7 @@ class ChatGenerator(PtbGenerator):
             return Chat(
                 cid or self.gen_id(group=True),
                 type,
-                title=title,
-                all_members_are_administrators=all_members_are_administrators)
+                title=title)
         elif type == "supergroup" or type == "channel":
             if not title:
                 gn = random.choice(self.GROUPNAMES)
