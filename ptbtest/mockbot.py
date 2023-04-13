@@ -88,7 +88,7 @@ class Mockbot(TelegramObject):
     def info(func):
         @functools.wraps(func)
         def decorator(self, *args, **kwargs):
-            if not self.bot:
+            if not self._bot:
                 self.getMe()
 
             result = func(self, *args, **kwargs)
