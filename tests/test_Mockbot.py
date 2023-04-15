@@ -23,10 +23,10 @@ from __future__ import absolute_import
 import unittest
 
 import telegram
-from telegram import ChatAction
+from telegram.constants import ChatAction
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram import InlineQueryResult
-from telegram import TelegramError
+from telegram.error import TelegramError
 from telegram import User, Message, Chat, Update
 from telegram.ext import Updater, CommandHandler
 
